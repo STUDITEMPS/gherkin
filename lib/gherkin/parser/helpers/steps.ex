@@ -49,11 +49,11 @@ defmodule Gherkin.Parser.Helpers.Steps do
   """
   def string_to_step(string, line) do
     case string do
-      "Given " <> text -> %Steps.Given{text: text, line: line}
-      "When " <> text  -> %Steps.When{text: text, line: line}
-      "Then " <> text  -> %Steps.Then{text: text, line: line}
-      "And " <> text  -> %Steps.And{text: text, line: line}
-      "But " <> text  -> %Steps.But{text: text, line: line}
+      "Angenommen " <> text -> %Steps.Given{text: text, line: line}
+      "Wenn " <> text  -> %Steps.When{text: text, line: line}
+      "Dann " <> text  -> %Steps.Then{text: text, line: line}
+      "Und " <> text  -> %Steps.And{text: text, line: line}
+      "Aber " <> text  -> %Steps.But{text: text, line: line}
     end
   end
 
