@@ -29,25 +29,25 @@ defmodule Gherkin.Parser.GenericLine do
     {feature, %{tags: process_tags(line)}}
   end
 
-  defp process("Feature: " <> name, {feature, state}, line_number) do
+  defp process("Funktionalität: " <> name, {feature, state}, line_number) do
     feature_tags = tags_from_state(state)
     FeatureParser.start_processing_feature(feature, name, feature_tags, line_number)
   end
 
-  defp process("Background:" <> _, {feature, _}, _line_number) do
+  defp process("Grundlage:" <> _, {feature, _}, _line_number) do
     {feature, :background_steps}
   end
 
-  defp process("Examples:" <> _, {feature, _}, _line_number) do
+  defp process("Beispiele:" <> _, {feature, _}, _line_number) do
     {feature, {:scenario_outline_example, []}}
   end
 
-  defp process("Scenario: " <> name, {feature, state}, line_number) do
+  defp process("Szenario: " <> name, {feature, state}, line_number) do
     tags = tags_from_state(state)
     ScenarioParser.start_processing_scenario(feature, name, tags, line_number)
   end
 
-  defp process("Scenario Outline: " <> name, {feature, state}, line_number) do
+  defp process("Szenariogrundriss: " <> name, {feature, state}, line_number) do
     tags = tags_from_state(state)
     ScenarioParser.start_processing_scenario_outline(feature, name, tags, line_number)
   end
