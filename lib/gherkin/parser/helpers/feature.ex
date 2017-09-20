@@ -2,7 +2,7 @@ defmodule Gherkin.Parser.Helpers.Feature do
   @moduledoc false
   import String, only: [rstrip: 1]
 
-  def process_feature_desc_line("As a " <> role = line, feature) do
+  def process_feature_desc_line("Als " <> role = line, feature) do
     {
       feature
         |> add_role(role)
