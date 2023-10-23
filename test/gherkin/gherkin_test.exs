@@ -19,7 +19,7 @@ defmodule Gherkin.GherkinTest do
       Wenn I press the coffee button
       Dann I should be served <served> coffees
 
-      Beispiele:
+      Beispiele: Name of example
         | coffees | money | served |
         |  12     |  6    |  12    |
         |  2      |  3    |  2     |

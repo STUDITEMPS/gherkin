@@ -17,6 +17,7 @@ defmodule Gherkin.Parsers.ScenarioParser do
     {updated_scenario_outline, [line | lines]} =
       StepParser.build_steps(updated_scenario_outline, remaining_lines)
 
+
     if is_outline_keyword?(line.text) do
       {[header], table_lines} = Enum.split(lines, 1)
       {kv_pairs, remaining_lines} = TableParser.parse_table(header.text, table_lines)
@@ -27,6 +28,7 @@ defmodule Gherkin.Parsers.ScenarioParser do
   end
 
   defp is_outline_keyword?(text) do
-    String.trim(text) in ["Beispiele:", "Scenarios:"]
+    first_word = text |> String.trim |> String.split() |> List.first
+    first_word in ["Beispiele:", "Szenarien:"]
   end
 end
