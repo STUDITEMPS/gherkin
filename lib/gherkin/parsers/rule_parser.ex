@@ -18,19 +18,19 @@ defmodule Gherkin.Parsers.RuleParser do
     {tags, [line | remaining_lines]} = TagParser.process_tags(remaining_lines)
 
     case line do
-      %{text: "Background:" <> _} = _ ->
+      %{text: "Grundlage:" <> _} = _ ->
         {updated_rule, remaining_lines} =
           BackgroundParser.build_background(updated_rule, remaining_lines)
 
         build_rule(updated_rule, remaining_lines)
 
-      %{text: "Scenario:" <> scenario_name, line_number: line_number} = _ ->
+      %{text: "Szenario:" <> scenario_name, line_number: line_number} = _ ->
         build_scenario(scenario_name, line_number, tags, updated_rule, remaining_lines)
 
-      %{text: "Example:" <> scenario_name, line_number: line_number} = _ ->
+      %{text: "Beispiele:" <> scenario_name, line_number: line_number} = _ ->
         build_scenario(scenario_name, line_number, tags, updated_rule, remaining_lines)
 
-      %{text: "Scenario Outline:" <> scenario_name, line_number: line_number} = _ ->
+      %{text: "Szenario Outline:" <> scenario_name, line_number: line_number} = _ ->
         build_scenario_outline(scenario_name, line_number, tags, updated_rule, remaining_lines)
 
       %{text: "Scenario Template:" <> scenario_name, line_number: line_number} = _ ->

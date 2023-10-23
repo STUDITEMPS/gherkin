@@ -27,7 +27,7 @@ defmodule Gherkin do
           name: "Buy last coffee",
           steps: [
             %Gherkin.Elements.Step{
-              keyword: "Given",
+              keyword: "Angenommen",
               line: 8,
               text: "there are 1 coffees left in the machine"
             }
@@ -52,7 +52,7 @@ defmodule Gherkin do
           name: "Buy last coffee",
           steps: [
             %Gherkin.Elements.Step{
-              keyword: "Given",
+              keyword: "Angenommen",
               line: 8,
               text: "there are 1 coffees left in the machine"
             }
@@ -87,7 +87,7 @@ defmodule Gherkin do
           name: "Buy last coffee",
           steps: [
             %Gherkin.Elements.Step{
-              keyword: "Given",
+              keyword: "Angenommen",
               line: 8,
               text: "there are 1 coffees left in the machine"
             }

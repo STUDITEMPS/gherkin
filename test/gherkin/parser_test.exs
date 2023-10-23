@@ -6,197 +6,197 @@ defmodule Gherkin.ParserTest do
   alias Gherkin.Elements.Feature
 
   @feature_text """
-    Feature: Serve coffee
+    Funktionalität: Serve coffee
       Coffee should not be served until paid for
       Coffee should not be served until the button has been pressed
       If there is no coffee left then money should be refunded
 
-      Scenario: Buy last coffee
-        Given there are 1 coffees left in the machine
-        And I have deposited 1$
-        When I press the coffee button
-        Then I should be served a coffee
+      Szenario: Buy last coffee
+        Angenommen there are 1 coffees left in the machine
+        Und I have deposited 1$
+        Wenn I press the coffee button
+        Dann I should be served a coffee
 
-      Scenario: Be sad that no coffee is left
-        Given there are 0 coffees left in the machine
-        And I have deposited 1$
-        When I press the coffee button
-        Then I should be frustrated
+      Szenario: Be sad that no coffee is left
+        Angenommen there are 0 coffees left in the machine
+        Und I have deposited 1$
+        Wenn I press the coffee button
+        Dann I should be frustrated
   """
 
   @feature_with_backgroundtext """
-  Feature: Serve coffee
+  Funktionalität: Serve coffee
     Coffee should not be served until paid for
     Coffee should not be served until the button has been pressed
     If there is no coffee left then money should be refunded
 
-    Background:
-      Given coffee exists as a beverage
-      And there is a coffee machine
+    Grundlage:
+      Angenommen coffee exists as a beverage
+      Und there is a coffee machine
 
-    Scenario: Buy last coffee
-      Given there are 1 coffees left in the machine
-      And I have deposited 1$
-      When I press the coffee button
-      Then I should be served a coffee
+    Szenario: Buy last coffee
+      Angenommen there are 1 coffees left in the machine
+      Und I have deposited 1$
+      Wenn I press the coffee button
+      Dann I should be served a coffee
   """
 
   @feature_with_single_feature_tag """
   @beverage
-  Feature: Serve coffee
+  Funktionalität: Serve coffee
     Coffee should not be served until paid for
     Coffee should not be served until the button has been pressed
     If there is no coffee left then money should be refunded
 
-  Scenario: Buy last coffee
-    Given there are 1 coffees left in the machine
+  Szenario: Buy last coffee
+    Angenommen there are 1 coffees left in the machine
   """
 
   @feature_with_value_feature_tag """
   @cost 1
-  Feature: Serve coffee
+  Funktionalität: Serve coffee
     Coffee should not be served until paid for
     Coffee should not be served until the button has been pressed
     If there is no coffee left then money should be refunded
 
-  Scenario: Buy last coffee
-    Given there are 1 coffees left in the machine
+  Szenario: Buy last coffee
+    Angenommen there are 1 coffees left in the machine
   """
 
   @feature_with_multiple_feature_tag """
   @beverage @coffee
   @caffeine
-  Feature: Serve coffee
+  Funktionalität: Serve coffee
     Coffee should not be served until paid for
     Coffee should not be served until the button has been pressed
     If there is no coffee left then money should be refunded
 
-  Scenario: Buy last coffee
-    Given there are 1 coffees left in the machine
+  Szenario: Buy last coffee
+    Angenommen there are 1 coffees left in the machine
   """
 
   @feature_with_step_with_table """
-  Feature: Have tables
+  Funktionalität: Have tables
     Sometimes data is a table
 
-    Scenario: I have a step with a table
-      Given the following table
+    Szenario: I have a step with a table
+      Angenommen the following table
       | Column one | Column two |
       | Hello      | World      |
-      Then everything should be okay
+      Dann everything should be okay
   """
 
   @feature_with_step_with_table_containing_pipes ~S"""
-  Feature: Have tables
+  Funktionalität: Have tables
     Sometimes data is a table
 
-    Scenario: I have a step with a table
-      Given the following table
+    Szenario: I have a step with a table
+      Angenommen the following table
       | Column one | Column two              |
       | Hello      | World                   |
       | Goodbye    | It's all\|folks!        |
       | Goodbye    | It's\|all\|folks!       |
       | Goodbye    | Backslash and pipe: \\| |
-      Then everything should be okay
+      Dann everything should be okay
   """
 
   @feature_with_doc_string "
-  Feature: Have tables
+  Funktionalität: Have tables
     Sometimes data is a table
 
-    Scenario: I have a step with a doc string
-      Given the following data
+    Szenario: I have a step with a doc string
+      Angenommen the following data
       \"\"\"json
       {
         \"a\": \"b\"
       }
       \"\"\"
-      Then everything should be okay
+      Dann everything should be okay
   "
 
   @feature_with_scenario_outline """
-  Feature: Scenario outlines exist
+  Funktionalität: Szenariogrundrisss exist
 
-    Scenario Outline: eating
-      Given there are <start> cucumbers
-      When I eat <eat> cucumbers
-      Then I should have <left> cucumbers
+    Szenario Outline: eating
+      Angenommen there are <start> cucumbers
+      Wenn I eat <eat> cucumbers
+      Dann I should have <left> cucumbers
 
-      Examples:
+      Beispiele:
         | start | eat | left |
         |  12   |  5  |  7   |
         |  20   |  5  |  15  |
   """
 
   @feature_with_comments """
-    Feature: Serve coffee
+    Funktionalität: Serve coffee
       Coffee should not be served until paid for
       Coffee should not be served until the button has been pressed
       If there is no coffee left then money should be refunded
 
       #Only one coffee? this is bad!
-      Scenario: Buy last coffee
-        Given there are 1 coffees left in the machine
-        And I have deposited 1$
-        When I press the coffee button
+      Szenario: Buy last coffee
+        Angenommen there are 1 coffees left in the machine
+        Und I have deposited 1$
+        Wenn I press the coffee button
         # I better get some coffee
-        Then I should be served a coffee
+        Dann I should be served a coffee
   """
 
   @feature_with_rule """
-    Feature: Serve coffee
+    Funktionalität: Serve coffee
       Coffee should not be served until paid for
       Coffee should not be served until the button has been pressed
       If there is no coffee left then money should be refunded
 
       Rule: Coffee must be payed for
-        Background:
-          Given there are 1 coffees left in the machine
+        Grundlage:
+          Angenommen there are 1 coffees left in the machine
 
-        Scenario: Deposit money before buying coffee
-          Given I have deposited 1$
-          When I press the coffee button
-          Then I should be served a coffee
+        Szenario: Deposit money before buying coffee
+          Angenommen I have deposited 1$
+          Wenn I press the coffee button
+          Dann I should be served a coffee
 
-        Scenario: Don't deposit money before buying coffee
-          Given I press the coffee button
-          Then I should not be served a coffee
+        Szenario: Don't deposit money before buying coffee
+          Angenommen I press the coffee button
+          Dann I should not be served a coffee
   """
 
   @feature_with_multiple_rules """
-    Feature: Barista protocol
+    Funktionalität: Barista protocol
       Always greet with a smile
       Always ask for the customer's name
 
       Rule: In a normal store
-        Background:
-          Given a customer has approached the till
+        Grundlage:
+          Angenommen a customer has approached the till
 
-        Scenario: Customer speaks first
-          Given they place an order before Barista can greet
-          Then skip greeting and ask name
-          And serve with a smile
+        Szenario: Customer speaks first
+          Angenommen they place an order before Barista can greet
+          Dann skip greeting and ask name
+          Und serve with a smile
 
-        Scenario: Barista speaks first
-          Given Barista greets first
-          Then say common greeting and ask for order and name
-          And serve with a smile
+        Szenario: Barista speaks first
+          Angenommen Barista greets first
+          Dann say common greeting and ask for order and name
+          Und serve with a smile
 
       Rule: In the Pentagon
         For security purposes no names can be used at this location
 
-        Background:
-          Given a customer has approached the till
+        Grundlage:
+          Angenommen a customer has approached the till
 
-        Scenario: Customer speaks first
-          Given they place an order before Barista can greet
-          Then skip greeting and give customer a unique order number
-          And serve with a smile
+        Szenario: Customer speaks first
+          Angenommen they place an order before Barista can greet
+          Dann skip greeting and give customer a unique order number
+          Und serve with a smile
 
-        Scenario: Barista speaks first
-          Given Barista greets first
-          Then say common greeting and ask for order and give customer a unique order number
-          And serve with a smile
+        Szenario: Barista speaks first
+          Angenommen Barista greets first
+          Dann say common greeting and ask for order and give customer a unique order number
+          Und serve with a smile
   """
 
   test "binary and stream is parsed exaclty the same" do
@@ -245,10 +245,10 @@ defmodule Gherkin.ParserTest do
 
   test "Has the correct steps for a scenario" do
     expected_steps = [
-      %Step{keyword: "Given", text: "there are 1 coffees left in the machine", line: 7},
-      %Step{keyword: "And", text: "I have deposited 1$", line: 8},
-      %Step{keyword: "When", text: "I press the coffee button", line: 9},
-      %Step{keyword: "Then", text: "I should be served a coffee", line: 10}
+      %Step{keyword: "Angenommen", text: "there are 1 coffees left in the machine", line: 7},
+      %Step{keyword: "Und", text: "I have deposited 1$", line: 8},
+      %Step{keyword: "Wenn", text: "I press the coffee button", line: 9},
+      %Step{keyword: "Dann", text: "I should be served a coffee", line: 10}
     ]
 
     %{scenarios: [%{steps: steps} | _]} = parse_feature(@feature_text)
@@ -257,8 +257,8 @@ defmodule Gherkin.ParserTest do
 
   test "Parses the expected background steps" do
     expected_steps = [
-      %Step{keyword: "Given", text: "coffee exists as a beverage", line: 7},
-      %Step{keyword: "And", text: "there is a coffee machine", line: 8}
+      %Step{keyword: "Angenommen", text: "coffee exists as a beverage", line: 7},
+      %Step{keyword: "Und", text: "there is a coffee machine", line: 8}
     ]
 
     %{background_steps: background_steps} = parse_feature(@feature_with_backgroundtext)
@@ -269,8 +269,8 @@ defmodule Gherkin.ParserTest do
     expected_data = "{\n  \"a\": \"b\"\n}\n"
 
     expected_steps = [
-      %Step{keyword: "Given", text: "the following data", doc_string: expected_data, line: 5},
-      %Step{keyword: "Then", text: "everything should be okay", line: 11}
+      %Step{keyword: "Angenommen", text: "the following data", doc_string: expected_data, line: 5},
+      %Step{keyword: "Dann", text: "everything should be okay", line: 11}
     ]
 
     %{scenarios: [%{steps: steps} | _]} = parse_feature(@feature_with_doc_string)
@@ -284,12 +284,12 @@ defmodule Gherkin.ParserTest do
 
     expected_steps = [
       %Step{
-        keyword: "Given",
+        keyword: "Angenommen",
         text: "the following table",
         table_data: expected_table_data,
         line: 5
       },
-      %Step{keyword: "Then", text: "everything should be okay", line: 8}
+      %Step{keyword: "Dann", text: "everything should be okay", line: 8}
     ]
 
     %{scenarios: [%{steps: steps} | _]} = parse_feature(@feature_with_step_with_table)
@@ -306,12 +306,12 @@ defmodule Gherkin.ParserTest do
 
     expected_steps = [
       %Step{
-        keyword: "Given",
+        keyword: "Angenommen",
         text: "the following table",
         table_data: expected_table_data,
         line: 5
       },
-      %Step{keyword: "Then", text: "everything should be okay", line: 11}
+      %Step{keyword: "Dann", text: "everything should be okay", line: 11}
     ]
 
     %{scenarios: [%{steps: steps} | _]} =
@@ -320,16 +320,16 @@ defmodule Gherkin.ParserTest do
     assert expected_steps == steps
   end
 
-  test "Reads Scenario outlines correctly" do
+  test "Reads Szenariogrundrisss correctly" do
     expected_example_data = [
       %{start: "12", eat: "5", left: "7"},
       %{start: "20", eat: "5", left: "15"}
     ]
 
     expected_steps = [
-      %Step{keyword: "Given", text: "there are <start> cucumbers", line: 4},
-      %Step{keyword: "When", text: "I eat <eat> cucumbers", line: 5},
-      %Step{keyword: "Then", text: "I should have <left> cucumbers", line: 6}
+      %Step{keyword: "Angenommen", text: "there are <start> cucumbers", line: 4},
+      %Step{keyword: "Wenn", text: "I eat <eat> cucumbers", line: 5},
+      %Step{keyword: "Dann", text: "I should have <left> cucumbers", line: 6}
     ]
 
     %{scenarios: [%{steps: steps, examples: examples} | _]} =

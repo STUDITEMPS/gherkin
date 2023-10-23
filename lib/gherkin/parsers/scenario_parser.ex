@@ -22,11 +22,11 @@ defmodule Gherkin.Parsers.ScenarioParser do
       {kv_pairs, remaining_lines} = TableParser.parse_table(header.text, table_lines)
       {%{updated_scenario_outline | examples: kv_pairs}, remaining_lines}
     else
-      raise("Unexpected line when parsing Scenario Outline: #{line.text}")
+      raise("Unexpected line when parsing Szenario Outline: #{line.text}")
     end
   end
 
   defp is_outline_keyword?(text) do
-    String.trim(text) in ["Examples:", "Scenarios:"]
+    String.trim(text) in ["Beispiele:", "Scenarios:"]
   end
 end

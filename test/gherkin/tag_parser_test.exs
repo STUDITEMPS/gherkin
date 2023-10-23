@@ -4,38 +4,38 @@ defmodule Gherkin.TagParserTest do
 
   @feature_with_single_feature_tag """
   @beverage
-  Feature: Serve coffee
+  Funktionalität: Serve coffee
   Coffee should not be served until paid for
   Coffee should not be served until the button has been pressed
   If there is no coffee left then money should be refunded
 
-  Scenario: Buy last coffee
-  Given there are 1 coffees left in the machine
+  Szenario: Buy last coffee
+  Angenommen there are 1 coffees left in the machine
   """
 
   @feature_with_many_feature_tags """
   @beverage @coffee @happy
-  Feature: Serve coffee
+  Funktionalität: Serve coffee
   Coffee should not be served until paid for
   Coffee should not be served until the button has been pressed
   If there is no coffee left then money should be refunded
 
-  Scenario: Buy last coffee
-  Given there are 1 coffees left in the machine
+  Szenario: Buy last coffee
+  Angenommen there are 1 coffees left in the machine
   """
 
   @scenrio_with_tags """
-  Feature: Serve coffee
+  Funktionalität: Serve coffee
   Coffee should not be served until paid for
   Coffee should not be served until the button has been pressed
   If there is no coffee left then money should be refunded
 
   @important
-  Scenario: Buy last coffee
-  Given there are 1 coffees left in the machine
+  Szenario: Buy last coffee
+  Angenommen there are 1 coffees left in the machine
 
-  Scenario: Buy a bagel
-  Given there are bagels
+  Szenario: Buy a bagel
+  Angenommen there are bagels
   """
 
   test "Parses the feature with single tag" do

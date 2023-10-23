@@ -15,27 +15,25 @@ defmodule Gherkin.Parsers.FeatureParser do
     {tags, [line | remaining_lines]} = TagParser.process_tags(all_lines)
 
     case line do
-      %{text: "Feature: " <> name, line_number: line_number} = _ ->
+      %{text: "Funktionalität: " <> name, line_number: line_number} = _ ->
         updated_feature = %{feature | line: line_number, name: String.trim(name), tags: tags}
-
         {updated_feature, remaining_lines} =
           DescriptionParser.build_description(updated_feature, remaining_lines)
-
         build_feature(updated_feature, remaining_lines)
 
-      %{text: "Background:" <> _} = _ ->
+      %{text: "Grundlage:" <> _} = _ ->
         {updated_feature, remaining_lines} =
           BackgroundParser.build_background(feature, remaining_lines)
 
         build_feature(updated_feature, remaining_lines)
 
-      %{text: "Scenario:" <> scenario_name, line_number: line_number} = _ ->
+      %{text: "Szenario:" <> scenario_name, line_number: line_number} = _ ->
         build_scenario(scenario_name, line_number, tags, feature, remaining_lines)
 
-      %{text: "Example:" <> scenario_name, line_number: line_number} = _ ->
+      %{text: "Beispiele:" <> scenario_name, line_number: line_number} = _ ->
         build_scenario(scenario_name, line_number, tags, feature, remaining_lines)
 
-      %{text: "Scenario Outline:" <> scenario_name, line_number: line_number} = _ ->
+      %{text: "Szenario Outline:" <> scenario_name, line_number: line_number} = _ ->
         build_scenario_outline(scenario_name, line_number, tags, feature, remaining_lines)
 
       %{text: "Scenario Template:" <> scenario_name, line_number: line_number} = _ ->
@@ -52,7 +50,7 @@ defmodule Gherkin.Parsers.FeatureParser do
         build_feature(%{feature | rules: [updated_rule | feature.rules]}, remaining_lines)
 
       _ ->
-        raise("Unexpected line when building Feature: #{line.text}")
+        raise("Unexpected line when building Funktionalität: #{line.text}")
     end
   end
 

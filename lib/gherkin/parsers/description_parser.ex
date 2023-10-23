@@ -11,16 +11,16 @@ defmodule Gherkin.Parsers.DescriptionParser do
 
   @all_keywords [
     "@",
-    "Feature",
+    "Funktionalität",
     "Rule",
-    "Background",
-    "Example",
-    "Scenario",
+    "Grundlage",
+    "Beispiele",
+    "Szenario",
     ~s{"""},
-    "Given",
-    "Then",
-    "And",
-    "But"
+    "Angenommen",
+    "Dann",
+    "Und",
+    "Aber"
   ]
   defp starts_with_keyword?(line) do
     String.starts_with?(line, @all_keywords)

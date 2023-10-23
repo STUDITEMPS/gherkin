@@ -48,6 +48,6 @@ defmodule Gherkin.Parsers.StepParser do
   end
 
   defp is_step?(keyword) do
-    keyword in ["Given", "Then", "When", "And", "But"]
+    keyword in ["Angenommen", "Dann", "Wenn", "Und", "Aber"]
   end
 end
