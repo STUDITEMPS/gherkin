@@ -33,7 +33,7 @@ defmodule Gherkin.Parsers.FeatureParser do
       %{text: "Beispiele:" <> scenario_name, line_number: line_number} = _ ->
         build_scenario(scenario_name, line_number, tags, feature, remaining_lines)
 
-      %{text: "Szenario Outline:" <> scenario_name, line_number: line_number} = _ ->
+      %{text: "Szenariogrundriss:" <> scenario_name, line_number: line_number} = _ ->
         build_scenario_outline(scenario_name, line_number, tags, feature, remaining_lines)
 
       %{text: "Scenario Template:" <> scenario_name, line_number: line_number} = _ ->

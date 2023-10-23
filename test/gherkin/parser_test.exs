@@ -117,7 +117,7 @@ defmodule Gherkin.ParserTest do
   @feature_with_scenario_outline """
   Funktionalität: Szenariogrundrisss exist
 
-    Szenario Outline: eating
+    Szenariogrundriss: eating
       Angenommen there are <start> cucumbers
       Wenn I eat <eat> cucumbers
       Dann I should have <left> cucumbers

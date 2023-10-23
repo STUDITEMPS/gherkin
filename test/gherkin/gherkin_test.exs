@@ -13,7 +13,7 @@ defmodule Gherkin.GherkinTest do
   @outline """
   Funktionalität: Serve coffee
 
-    Szenario Outline: Buy coffee
+    Szenariogrundriss: Buy coffee
       Angenommen there are <coffees> coffees left in the machine
       Und I have deposited $<money>
       Wenn I press the coffee button
