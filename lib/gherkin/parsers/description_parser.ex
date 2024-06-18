@@ -18,6 +18,7 @@ defmodule Gherkin.Parsers.DescriptionParser do
     "Szenario",
     ~s{"""},
     "Angenommen",
+    "Wenn",
     "Dann",
     "Und",
     "Aber"
